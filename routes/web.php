@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\API\ApartmentController;
 use App\Http\Controllers\Guest\PageController as GuestPageController;
 
 /*
@@ -27,5 +28,11 @@ Route::middleware(['auth', 'verified'])
     Route::get('/', [AdminPageController::class, 'index'])->name('home');
     Route::get('register-apartment', [AdminPageController::class, 'viewApartmentRegistrationForm'])->name('register-apartment');
   });
+
+Route::prefix('apartments')->group(function () {
+  Route::get('/', [ApartmentController::class, 'index'])->name('apartments.index');
+  Route::post('/', [ApartmentController::class, 'store'])->name('apartments.store');
+  Route::get('/{id}', [ApartmentController::class, 'show'])->name('apartments.show');
+});
 
 require __DIR__ . '/auth.php';
