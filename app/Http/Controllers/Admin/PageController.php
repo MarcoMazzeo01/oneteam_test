@@ -11,4 +11,9 @@ class PageController extends Controller
   {
     return view('admin.dashboard');
   }
+
+  public function viewApartmentRegistrationForm()
+  {
+    return view('admin.register-apartment');
+  }
 }

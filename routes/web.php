@@ -25,7 +25,7 @@ Route::middleware(['auth', 'verified'])
   ->group(function () {
 
     Route::get('/', [AdminPageController::class, 'index'])->name('home');
-
+    Route::get('register-apartment', [AdminPageController::class, 'viewApartmentRegistrationForm'])->name('register-apartment');
   });
 
 require __DIR__ . '/auth.php';
